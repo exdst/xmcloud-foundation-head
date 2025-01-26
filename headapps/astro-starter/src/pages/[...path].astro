@@ -3,7 +3,10 @@ import JssLayout from "../layouts/JssLayout.astro";
 import { SitemapService, StaticPath } from "../lib/sitemap-service";
 import { SitecorePagePropsFactory } from "../lib/page-props-factory";
 import { SitecoreContextMap } from "@astro-sitecore-jss/astro-sitecore-jss";
-import type { LayoutServiceContext, RouteData } from '@sitecore-jss/sitecore-jss/layout';
+import type {
+  LayoutServiceContext,
+  RouteData,
+} from "@sitecore-jss/sitecore-jss/layout";
 import config from "../temp/config";
 import GraphQLRequestClientFactory from "../lib/graphql/graphql-request-client-factory";
 
@@ -27,21 +30,29 @@ export async function getStaticPaths() {
 }*/
 
 export type SitecoreContextValue = LayoutServiceContext & {
-    itemId?: string;
-    route?: RouteData;
+  itemId?: string;
+  route?: RouteData;
 };
 
 const { path } = Astro.params;
+let pageProps: any = null;
 
-let sitecorePagePropsFactory = new SitecorePagePropsFactory();
-const pageProps = await sitecorePagePropsFactory.create(path ?? "/", config.defaultLanguage);
+try {
+  let sitecorePagePropsFactory = new SitecorePagePropsFactory();
+  pageProps = await sitecorePagePropsFactory.create(
+    path ?? "/",
+    config.defaultLanguage
+  );
 
-let scContext = pageProps.layoutData.sitecore.context as SitecoreContextValue;
-scContext.route = pageProps.layoutData.sitecore.route;
-scContext.itemId = pageProps.layoutData.sitecore.route.itemId;
+  let scContext = pageProps.layoutData.sitecore.context as SitecoreContextValue;
+  scContext.route = pageProps.layoutData.sitecore.route;
+  scContext.itemId = pageProps.layoutData.sitecore.route.itemId;
 
-SitecoreContextMap.setKey('scContext', scContext);
-SitecoreContextMap.setKey('dictionary', pageProps.dictionary);
-
+  SitecoreContextMap.setKey("scContext", scContext);
+  SitecoreContextMap.setKey("dictionary", pageProps.dictionary);
+} catch (error) {
+  console.error(error);
+}
 ---
+
 <JssLayout title="a" layoutData={pageProps.layoutData} />
