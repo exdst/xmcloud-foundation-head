@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "npm-run-all --serial bootstrap astro:dev",
     "build": "npm-run-all --serial bootstrap astro:build",
-    "astro:dev": "astro dev --host",
+    "astro:dev": "astro dev",
     "astro:build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
