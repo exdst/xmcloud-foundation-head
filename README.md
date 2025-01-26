@@ -1,6 +1,6 @@
 # XM Cloud Front End Application Astro JSS Starter kit
 
-This repository is a fork of Sitecore [sitecorelabs/xmcloud-foundation-head]([https://nodejs.org/en/](https://github.com/sitecorelabs/xmcloud-foundation-head) repository. It was extended with the Astro Starter Kit.
+This repository is a fork of Sitecore [sitecorelabs/xmcloud-foundation-head](https://github.com/sitecorelabs/xmcloud-foundation-head) repository. It was extended with the Astro Starter Kit.
 It is intended to get developers up and running quickly with a new Astro project that is integrated with Sitecore XM Cloud.
 
 ## GitHub Template
