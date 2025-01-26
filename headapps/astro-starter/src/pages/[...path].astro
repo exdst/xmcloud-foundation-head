@@ -36,6 +36,7 @@ export type SitecoreContextValue = LayoutServiceContext & {
 
 const { path } = Astro.params;
 let pageProps: any = null;
+const configFile = require("../temp/config");
 
 try {
   let sitecorePagePropsFactory = new SitecorePagePropsFactory();
@@ -55,4 +56,9 @@ try {
 }
 ---
 
-<JssLayout title="a" layoutData={pageProps.layoutData} />
+<div>
+  {JSON.stringify(configFile)}
+</div>
+<div>
+  {JSON.stringify(config)}
+</div>
