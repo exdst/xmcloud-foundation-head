@@ -1,45 +1,39 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import vue from '@astrojs/vue';
-import node from '@astrojs/node';
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import vue from "@astrojs/vue";
+import node from "@astrojs/node";
 import angular from "@analogjs/astro-angular";
 
 const reactConfig = {
   babel: {
-    "presets": [
+    presets: [
       [
         "@babel/preset-react",
         {
-          "runtime": "classic"
-        }
-      ]
+          runtime: "classic",
+        },
+      ],
     ],
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", { "legacy": true }]
-    ]
-  }
-}
+    plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
+  },
+};
 
 const angularConfig = {
   vite: {
-    transformFilter: (code, id ) => {
-      return !id.includes('/packages/astro-sitecore-jss/')
-    }
-  }
-}
+    transformFilter: (code, id) => {
+      return !id.includes("/packages/astro-sitecore-jss/");
+    },
+  },
+};
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    react(reactConfig),
-    vue(),
-    angular(angularConfig)
-  ],
-  output: 'server',
+  integrations: [react(reactConfig), vue(), angular(angularConfig)],
+  output: "server",
   adapter: node({
-    mode: 'standalone',
+    mode: "standalone",
   }),
-  outDir: './dist',
+  outDir: "./dist",
   security: {
     checkOrigin: false,
   },
@@ -48,6 +42,11 @@ export default defineConfig({
     host: true,
   },
   devToolbar: {
-    enabled: false
-  }
+    enabled: false,
+  },
+  vite: {
+    server: {
+      allowedHosts: "xmc-eh-pvqdxinhnfvtwr69mhbkp.sitecorecloud.io",
+    },
+  },
 });
