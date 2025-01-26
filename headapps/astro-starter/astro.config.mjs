@@ -46,7 +46,7 @@ export default defineConfig({
   },
   vite: {
     server: {
-      allowedHosts: "xmc-eh-pvqdxinhnfvtwr69mhbkp.sitecorecloud.io",
+      allowedHosts: true,
     },
   },
 });
