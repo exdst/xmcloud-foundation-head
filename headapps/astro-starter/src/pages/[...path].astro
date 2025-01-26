@@ -7,15 +7,24 @@ import type { LayoutServiceContext, RouteData } from '@sitecore-jss/sitecore-jss
 import config from "../temp/config";
 import GraphQLRequestClientFactory from "../lib/graphql/graphql-request-client-factory";
 
-export const prerender = true;
+export const prerender = false;
 
+/*
 export async function getStaticPaths() {
+  console.log("getStaticPaths");
+  console.log('config.defaultLanguage', config.defaultLanguage);
+  console.log('config.graphQLEndpoint', config.graphQLEndpoint);
+  console.log('config.sitecoreApiKey', config.sitecoreApiKey);
+  console.log('config.sitecoreApiHost', config.sitecoreApiHost);
+  console.log("END getStaticPaths");
+  
+
   const graphQlRequestSitemapFactory = new GraphQLRequestClientFactory();
   const sitemapService = new SitemapService(graphQlRequestSitemapFactory);
   const staticPaths: StaticPath[] = await sitemapService.getStaticSitemap(config.defaultLanguage);
 
   return staticPaths;
-}
+}*/
 
 export type SitecoreContextValue = LayoutServiceContext & {
     itemId?: string;
