@@ -8,9 +8,6 @@ SharedFields:
 - ID: "1ee576af-ba8e-4312-9fbd-2ccf8395baa1"
   Hint: StartItem
   Value: "{7B4913AE-F499-5976-BDB3-58517D48A67E}"
-- ID: "8e0dd914-9afb-4d45-bf8b-7ff5d6e5337e"
-  Hint: HostName
-  Value: astro.headless.localhost
 - ID: "cb4e9e2e-2b66-43dc-ad3f-9caf363d28d3"
   Hint: SiteName
   Value: astro
