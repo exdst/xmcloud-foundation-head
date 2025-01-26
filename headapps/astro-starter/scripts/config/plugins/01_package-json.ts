@@ -16,7 +16,7 @@ class PackageJsonPlugin implements IConfigPlugin {
     }
 
     return Object.assign({}, config, {
-      sitecoreSiteName: packageConfig.config.appName || config.sitecoreSiteName || "",
+      jssAppName: packageConfig.config.appName || config.jssAppName || "",
       defaultLanguage: packageConfig.config.language || config.defaultLanguage || ""
     });
   }
