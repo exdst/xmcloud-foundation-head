@@ -37,28 +37,18 @@ export type SitecoreContextValue = LayoutServiceContext & {
 const { path } = Astro.params;
 let pageProps: any = null;
 
-try {
-  let sitecorePagePropsFactory = new SitecorePagePropsFactory();
-  pageProps = await sitecorePagePropsFactory.create(
-    path ?? "/",
-    config.defaultLanguage
-  );
+let sitecorePagePropsFactory = new SitecorePagePropsFactory();
+pageProps = await sitecorePagePropsFactory.create(
+  path ?? "/",
+  config.defaultLanguage
+);
 
-  let scContext = pageProps.layoutData.sitecore.context as SitecoreContextValue;
-  scContext.route = pageProps.layoutData.sitecore.route;
-  scContext.itemId = pageProps.layoutData.sitecore.route.itemId;
+let scContext = pageProps.layoutData.sitecore.context as SitecoreContextValue;
+scContext.route = pageProps.layoutData.sitecore.route;
+scContext.itemId = pageProps.layoutData.sitecore.route.itemId;
 
-  SitecoreContextMap.setKey("scContext", scContext);
-  SitecoreContextMap.setKey("dictionary", pageProps.dictionary);
-} catch (error) {
-  console.error(error);
-}
+SitecoreContextMap.setKey("scContext", scContext);
+SitecoreContextMap.setKey("dictionary", pageProps.dictionary);
 ---
 
-<div>
-  {JSON.stringify(pageProps)}
-</div>
-
-<div>
-  {JSON.stringify(config)}
-</div>
+<JssLayout title={pageProps?.title} layoutData={pageProps?.layoutData} />
