@@ -1,0 +1,32 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# astro
+/dist/
+
+# graphql code generation
+/.generated
+*.graphql.d.ts
+*.graphqls.d.ts
+
+# misc
+.DS_Store
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+*.log*
+
+# sitecore
+scjssconfig.json
+*.deploysecret.config
+
+# vercel
+.vercel
